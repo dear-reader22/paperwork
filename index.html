@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#43342e">
+  <title>Paperwork</title>
+
+<style>
+
+  
+</style>
+</head>
+
+<body>
+
+  <!-- =========================================================
+       COVER
+       ========================================================= -->
+
+  <section id="cover" class="cover">
+    <div class="cover-book">
+      <div class="cover-spine"></div>
+
+      <div class="cover-content">
+        <p class="cover-small">YOUR PERSONAL PLANNER</p>
+
+        <h1>Paperwork</h1>
+
+        <p class="cover-subtitle">
+          plans, thoughts & everything in between
+        </p>
+
+        <button id="open-notebook" class="primary-button">
+          Open planner
+        </button>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- =========================================================
+       APP
+       ========================================================= -->
+
+  <div id="app" class="app hidden">
+
+    <!-- BOOK HEADER -->
+
+    <header class="book-header">
+
+      <div class="brand">
+        <span class="brand-mark">✦</span>
+        <span>Paperwork</span>
+      </div>
+
+      <div class="header-actions">
+        <button
+          id="notification-button"
+          class="icon-button"
+          title="Enable notifications"
+          aria-label="Enable notifications"
+        >
+          ♧
+        </button>
+
+        <button
+          id="today-button"
+          class="header-date-button"
+        >
+          <span id="header-date">Today</span>
+        </button>
+      </div>
+
+    </header>
+
+
+    <!-- =======================================================
+         NOTEBOOK BODY
+         ======================================================= -->
+
+    <div class="notebook">
+
+      <!-- LEFT PAGE -->
+
+      <aside class="notebook-sidebar">
+
+        <div class="sidebar-top">
+
+          <p class="sidebar-label">NOTEBOOK</p>
+
+          <nav class="main-nav" aria-label="Main navigation">
+
+            <button class="nav-item active" data-view="today">
+              <span class="nav-icon">☀</span>
+              <span>Today</span>
+            </button>
+
+            <button class="nav-item" data-view="week">
+              <span class="nav-icon">▦</span>
+              <span>Week</span>
+            </button>
+
+            <button class="nav-item" data-view="month">
+              <span class="nav-icon">▤</span>
+              <span>Month</span>
+            </button>
+
+            <button class="nav-item" data-view="focus">
+              <span class="nav-icon">◷</span>
+              <span>Focus</span>
+            </button>
+
+            <button class="nav-item" data-view="collections">
+              <span class="nav-icon">⌑</span>
+              <span>Collections</span>
+            </button>
+
+            <button class="nav-item" data-view="notes">
+              <span class="nav-icon">▱</span>
+              <span>Sticky notes</span>
+            </button>
+
+          </nav>
+
+        </div>
+
+
+        <div class="sidebar-bottom">
+
+          <div class="paperclip-decoration">
+            <span>⌇</span>
+          </div>
+
+          <p class="sidebar-tip">
+            Your notebook,<br>
+            your rules.
+          </p>
+
+        </div>
+
+      </aside>
+
+
+      <!-- RIGHT PAGE / MAIN CONTENT -->
+
+      <main class="notebook-page">
+
+        <!-- ===================================================
+             TODAY VIEW
+             =================================================== -->
+
+        <section
+          id="view-today"
+          class="view active"
+          data-view-panel="today"
+        >
+
+          <div class="page-heading">
+            <div>
+              <p class="eyebrow" id="today-weekday">MONDAY</p>
+              <h2 id="today-title">Today</h2>
+              <p id="today-full-date" class="muted"></p>
+            </div>
+
+            <button id="add-task-button" class="primary-button small">
+              + Add task
+            </button>
+          </div>
+
+
+          <div class="today-layout">
+
+            <!-- TASKS -->
+
+            <section class="paper-section tasks-section">
+
+              <div class="section-heading">
+                <div>
+                  <p class="section-kicker">TO-DO</p>
+                  <h3>Today's tasks</h3>
+                </div>
+
+                <span id="today-task-count" class="count-badge">0</span>
+              </div>
+
+              <div id="today-task-list" class="task-list">
+                <!-- JS renders tasks -->
+              </div>
+
+              <div id="today-empty" class="empty-state">
+                <span class="empty-icon">✦</span>
+                <p>Nothing here yet.</p>
+                <button
+                  class="text-button"
+                  data-action="add-task"
+                >
+                  Add your first task
+                </button>
+              </div>
+
+            </section>
+
+
+            <!-- SIDE CARDS -->
+
+            <div class="today-side">
+
+              <!-- HYDRATION -->
+
+              <section class="mini-card hydration-card">
+
+                <div class="mini-card-heading">
+                  <span>Hydration</span>
+                  <span>💧</span>
+                </div>
+
+                <div class="water-display">
+                  <strong id="water-count">0</strong>
+                  <span>glasses</span>
+                </div>
+
+                <div class="water-controls">
+
+                  <button
+                    id="remove-water"
+                    class="circle-button"
+                    aria-label="Remove glass"
+                  >
+                    −
+                  </button>
+
+                  <div class="water-bar">
+                    <div
+                      id="water-progress"
+                      class="water-progress"
+                    ></div>
+                  </div>
+
+                  <button
+                    id="add-water"
+                    class="circle-button"
+                    aria-label="Add glass"
+                  >
+                    +
+                  </button>
+
+                </div>
+
+              </section>
+
+
+              <!-- COUNTDOWNS -->
+
+              <section class="mini-card">
+
+                <div class="mini-card-heading">
+                  <span>Countdowns</span>
+
+                  <button
+                    id="add-countdown-button"
+                    class="mini-add-button"
+                    aria-label="Add countdown"
+                  >
+                    +
+                  </button>
+                </div>
+
+                <div id="countdown-list" class="countdown-list">
+                  <!-- JS renders countdowns -->
+                </div>
+
+                <div
+                  id="countdown-empty"
+                  class="mini-empty"
+                >
+                  No countdowns yet.
+                </div>
+
+              </section>
+
+
+              <!-- DESK COMPANION -->
+
+              <section class="mini-card companion-card">
+
+                <div class="mini-card-heading">
+                  <span>Desk companion</span>
+                  <span id="companion-mood">☁</span>
+                </div>
+
+                <div class="companion">
+                  <div id="companion-face" class="companion-face">
+                    ˙ᵕ˙
+                  </div>
+                </div>
+
+                <p id="companion-message">
+                  Ready when you are.
+                </p>
+
+              </section>
+
+            </div>
+
+          </div>
+
+
+          <!-- TODAY EVENTS -->
+
+          <section class="paper-section events-section">
+
+            <div class="section-heading">
+
+              <div>
+                <p class="section-kicker">ON THE PAGE</p>
+                <h3>Today's events</h3>
+              </div>
+
+              <button
+                id="add-event-today"
+                class="text-button"
+              >
+                + Add event
+              </button>
+
+            </div>
+
+            <div id="today-event-list" class="event-list">
+              <!-- JS renders events -->
+            </div>
+
+            <div
+              id="today-event-empty"
+              class="empty-inline"
+            >
+              No events planned for today.
+            </div>
+
+          </section>
+
+        </section>
+
+
+        <!-- ===================================================
+             WEEK VIEW
+             =================================================== -->
+
+        <section
+          id="view-week"
+          class="view"
+          data-view-panel="week"
+        >
+
+          <div class="page-heading">
+
+            <div>
+              <p class="eyebrow">WEEK AT A GLANCE</p>
+              <h2 id="week-title">This week</h2>
+            </div>
+
+            <div class="page-controls">
+
+              <button
+                id="previous-week"
+                class="circle-button"
+                aria-label="Previous week"
+              >
+                ←
+              </button>
+
+              <button
+                id="next-week"
+                class="circle-button"
+                aria-label="Next week"
+              >
+                →
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div id="week-grid" class="week-grid">
+            <!-- JS renders week -->
+          </div>
+
+        </section>
+
+
+        <!-- ===================================================
+             MONTH VIEW
+             =================================================== -->
+
+        <section
+          id="view-month"
+          class="view"
+          data-view-panel="month"
+        >
+
+          <div class="page-heading">
+
+            <div>
+              <p class="eyebrow">MONTH AT A GLANCE</p>
+              <h2 id="month-title">September 2026</h2>
+            </div>
+
+            <div class="page-controls">
+
+              <button
+                id="previous-month"
+                class="circle-button"
+                aria-label="Previous month"
+              >
+                ←
+              </button>
+
+              <button
+                id="next-month"
+                class="circle-button"
+                aria-label="Next month"
+              >
+                →
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <div class="calendar">
+
+            <div class="calendar-weekdays">
+              <span>Mon</span>
+              <span>Tue</span>
+              <span>Wed</span>
+              <span>Thu</span>
+              <span>Fri</span>
+              <span>Sat</span>
+              <span>Sun</span>
+            </div>
+
+            <div
+              id="calendar-grid"
+              class="calendar-grid"
+            >
+              <!-- JS renders calendar -->
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- ===================================================
+             FOCUS
+             =================================================== -->
+
+        <section
+          id="view-focus"
+          class="view"
+          data-view-panel="focus"
+        >
+
+          <div class="page-heading">
+
+            <div>
+              <p class="eyebrow">FOCUS SESSION</p>
+              <h2>Focus</h2>
+              <p class="muted">
+                One thing at a time.
+              </p>
+            </div>
+
+          </div>
+
+
+          <div class="focus-page">
+
+            <div class="focus-card">
+
+              <p id="focus-status" class="focus-status">
+                READY
+              </p>
+
+              <div id="focus-display" class="focus-display">
+                25:00
+              </div>
+
+              <div class="focus-controls">
+
+                <button
+                  id="focus-reset"
+                  class="secondary-button"
+                >
+                  Reset
+                </button>
+
+                <button
+                  id="focus-start"
+                  class="primary-button"
+                >
+                  Start
+                </button>
+
+              </div>
+
+            </div>
+
+
+            <div class="focus-note">
+
+              <span class="focus-note-pin">✦</span>
+
+              <p>
+                Put your phone down.<br>
+                Pick one thing.<br>
+                Begin.
+              </p>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- ===================================================
+             COLLECTIONS
+             =================================================== -->
+
+        <section
+          id="view-collections"
+          class="view"
+          data-view-panel="collections"
+        >
+
+          <div class="page-heading">
+
+            <div>
+              <p class="eyebrow">PAPERCLIPPED TOGETHER</p>
+              <h2>Collections</h2>
+              <p class="muted">
+                Keep related things together.
+              </p>
+            </div>
+
+            <button
+              id="add-collection-button"
+              class="primary-button small"
+            >
+              + Collection
+            </button>
+
+          </div>
+
+
+          <div
+            id="collection-list"
+            class="collection-list"
+          >
+            <!-- JS renders collections -->
+          </div>
+
+          <div
+            id="collection-empty"
+            class="empty-state"
+          >
+            <span class="empty-icon">⌑</span>
+            <p>No collections yet.</p>
+            <button
+              class="text-button"
+              data-action="add-collection"
+            >
+              Make one
+            </button>
+          </div>
+
+        </section>
+
+
+        <!-- ===================================================
+             STICKY NOTES
+             =================================================== -->
+
+        <section
+          id="view-notes"
+          class="view"
+          data-view-panel="notes"
+        >
+
+          <div class="page-heading">
+
+            <div>
+              <p class="eyebrow">SCRAPS OF THOUGHT</p>
+              <h2>Sticky notes</h2>
+            </div>
+
+            <button
+              id="add-note-button"
+              class="primary-button small"
+            >
+              + New note
+            </button>
+
+          </div>
+
+
+          <div
+            id="notes-board"
+            class="notes-board"
+          >
+            <!-- JS renders notes -->
+          </div>
+
+          <div
+            id="notes-empty"
+            class="empty-state"
+          >
+            <span class="empty-icon">▱</span>
+            <p>Your desk is clear.</p>
+            <button
+              class="text-button"
+              data-action="add-note"
+            >
+              Stick something down
+            </button>
+          </div>
+
+        </section>
+
+      </main>
+
+    </div>
+
+
+    <!-- =======================================================
+         FOOTER
+         ======================================================= -->
+
+    <footer class="book-footer">
+
+      <span id="footer-status">
+        Everything saved locally.
+      </span>
+
+      <span>
+        Paperwork
+      </span>
+
+    </footer>
+
+  </div>
+
+
+  <!-- =========================================================
+       TASK MODAL
+       ========================================================= -->
+
+  <div
+    id="task-modal"
+    class="modal hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="task-modal-title"
+  >
+
+    <div class="modal-backdrop" data-close-modal></div>
+
+    <div class="modal-card">
+
+      <div class="modal-header">
+
+        <div>
+          <p class="eyebrow">NEW TASK</p>
+          <h3 id="task-modal-title">Add a task</h3>
+        </div>
+
+        <button
+          class="modal-close"
+          data-close-modal
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <form id="task-form">
+
+        <input
+          type="hidden"
+          id="task-id"
+        >
+
+        <label>
+          Task
+          <input
+            id="task-name"
+            type="text"
+            placeholder="What needs doing?"
+            required
+          >
+        </label>
+
+
+        <div class="form-row">
+
+          <label>
+            Date
+            <input
+              id="task-date"
+              type="date"
+              required
+            >
+          </label>
+
+          <label>
+            Priority
+            <select id="task-priority">
+              <option value="low">Low</option>
+              <option value="medium" selected>Medium</option>
+              <option value="high">High</option>
+            </select>
+          </label>
+
+        </div>
+
+
+        <div class="form-row">
+
+          <label>
+            Start
+            <input
+              id="task-start"
+              type="time"
+            >
+          </label>
+
+          <label>
+            End
+            <input
+              id="task-end"
+              type="time"
+            >
+          </label>
+
+        </div>
+
+
+        <label class="checkbox-label">
+
+          <input
+            id="task-notification"
+            type="checkbox"
+            checked
+          >
+
+          <span>Remind me when this task starts</span>
+
+        </label>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="secondary-button"
+            data-close-modal
+          >
+            Cancel
+          </button>
+
+          <button
+            type="submit"
+            class="primary-button"
+          >
+            Save task
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       EVENT MODAL
+       ========================================================= -->
+
+  <div
+    id="event-modal"
+    class="modal hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="event-modal-title"
+  >
+
+    <div class="modal-backdrop" data-close-modal></div>
+
+    <div class="modal-card">
+
+      <div class="modal-header">
+
+        <div>
+          <p class="eyebrow">CALENDAR</p>
+          <h3 id="event-modal-title">Add an event</h3>
+        </div>
+
+        <button
+          class="modal-close"
+          data-close-modal
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <form id="event-form">
+
+        <input
+          type="hidden"
+          id="event-id"
+        >
+
+        <label>
+          Event
+          <input
+            id="event-name"
+            type="text"
+            placeholder="Trip, appointment, plans..."
+            required
+          >
+        </label>
+
+
+        <div class="form-row">
+
+          <label>
+            Date
+            <input
+              id="event-date"
+              type="date"
+              required
+            >
+          </label>
+
+          <label>
+            Colour
+            <select id="event-colour">
+              <option value="blue">Blue</option>
+              <option value="brown">Brown</option>
+              <option value="cream">Cream</option>
+            </select>
+          </label>
+
+        </div>
+
+
+        <div class="form-row">
+
+          <label>
+            Start
+            <input
+              id="event-start"
+              type="time"
+            >
+          </label>
+
+          <label>
+            End
+            <input
+              id="event-end"
+              type="time"
+            >
+          </label>
+
+        </div>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="secondary-button"
+            data-close-modal
+          >
+            Cancel
+          </button>
+
+          <button
+            type="submit"
+            class="primary-button"
+          >
+            Save event
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       COUNTDOWN MODAL
+       ========================================================= -->
+
+  <div
+    id="countdown-modal"
+    class="modal hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="countdown-modal-title"
+  >
+
+    <div class="modal-backdrop" data-close-modal></div>
+
+    <div class="modal-card">
+
+      <div class="modal-header">
+
+        <div>
+          <p class="eyebrow">COUNTDOWN</p>
+          <h3 id="countdown-modal-title">
+            Add a countdown
+          </h3>
+        </div>
+
+        <button
+          class="modal-close"
+          data-close-modal
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <form id="countdown-form">
+
+        <label>
+          Countdown to
+          <input
+            id="countdown-name"
+            type="text"
+            placeholder="Birthday, holiday, deadline..."
+            required
+          >
+        </label>
+
+
+        <label>
+          Date
+          <input
+            id="countdown-date"
+            type="date"
+            required
+          >
+        </label>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="secondary-button"
+            data-close-modal
+          >
+            Cancel
+          </button>
+
+          <button
+            type="submit"
+            class="primary-button"
+          >
+            Add countdown
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       NOTE MODAL
+       ========================================================= -->
+
+  <div
+    id="note-modal"
+    class="modal hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="note-modal-title"
+  >
+
+    <div class="modal-backdrop" data-close-modal></div>
+
+    <div class="modal-card">
+
+      <div class="modal-header">
+
+        <div>
+          <p class="eyebrow">STICKY NOTE</p>
+          <h3 id="note-modal-title">New note</h3>
+        </div>
+
+        <button
+          class="modal-close"
+          data-close-modal
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <form id="note-form">
+
+        <input
+          type="hidden"
+          id="note-id"
+        >
+
+        <label>
+          Title
+          <input
+            id="note-title"
+            type="text"
+            placeholder="Little thought..."
+          >
+        </label>
+
+
+        <label>
+          Note
+          <textarea
+            id="note-text"
+            rows="6"
+            placeholder="Write anything..."
+            required
+          ></textarea>
+        </label>
+
+
+        <label>
+          Paper
+          <select id="note-colour">
+            <option value="blue">Light blue</option>
+            <option value="cream">Cream</option>
+            <option value="brown">Brown</option>
+          </select>
+        </label>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="secondary-button"
+            data-close-modal
+          >
+            Cancel
+          </button>
+
+          <button
+            type="submit"
+            class="primary-button"
+          >
+            Save note
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       COLLECTION MODAL
+       ========================================================= -->
+
+  <div
+    id="collection-modal"
+    class="modal hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="collection-modal-title"
+  >
+
+    <div class="modal-backdrop" data-close-modal></div>
+
+    <div class="modal-card">
+
+      <div class="modal-header">
+
+        <div>
+          <p class="eyebrow">PAPERCLIP</p>
+          <h3 id="collection-modal-title">
+            New collection
+          </h3>
+        </div>
+
+        <button
+          class="modal-close"
+          data-close-modal
+          aria-label="Close"
+        >
+          ×
+        </button>
+
+      </div>
+
+
+      <form id="collection-form">
+
+        <label>
+          Collection name
+          <input
+            id="collection-name"
+            type="text"
+            placeholder="School, birthday, trip..."
+            required
+          >
+        </label>
+
+
+        <label>
+          Description
+          <textarea
+            id="collection-description"
+            rows="4"
+            placeholder="What belongs together?"
+          ></textarea>
+        </label>
+
+
+        <div class="modal-actions">
+
+          <button
+            type="button"
+            class="secondary-button"
+            data-close-modal
+          >
+            Cancel
+          </button>
+
+          <button
+            type="submit"
+            class="primary-button"
+          >
+            Create collection
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+  </div>
+
+
+  <!-- =========================================================
+       JAVASCRIPT
+       ========================================================= -->
+
+  <script src="script.js"></script>
+
+</body>
+</html>

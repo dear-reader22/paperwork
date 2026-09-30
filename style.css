@@ -1,0 +1,1969 @@
+/* ============================================================
+   PAPERWORK — NOTEBOOK STYLE
+   ============================================================ */
+
+:root {
+  --ink: #43342e;
+  --soft-ink: #796b64;
+  --brown: #76584b;
+  --brown-light: #aa8b7c;
+
+  --blue: #9bb7d1;
+  --blue-light: #e5edf5;
+
+  --cream: #f7f3eb;
+  --paper: #fffdf9;
+  --paper-dark: #eee7dc;
+
+  --line: #ded5ca;
+  --line-blue: rgba(155, 183, 209, 0.28);
+
+  --green: #82947b;
+  --red: #a8645b;
+}
+
+
+/* ============================================================
+   RESET
+   ============================================================ */
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100%;
+}
+
+body {
+  color: var(--ink);
+  background: var(--cream);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--blue);
+  outline-offset: 2px;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+/* ============================================================
+   COVER
+   ============================================================ */
+
+.cover {
+  min-height: 100vh;
+
+  display: grid;
+  place-items: center;
+
+  padding: 24px;
+
+  background:
+    radial-gradient(
+      circle at 30% 20%,
+      rgba(155, 183, 209, 0.22),
+      transparent 35%
+    ),
+    var(--cream);
+}
+
+.cover-book {
+  position: relative;
+
+  width: min(470px, 100%);
+  min-height: 620px;
+
+  display: grid;
+  place-items: center;
+
+  overflow: hidden;
+
+  background: var(--brown);
+
+  border-radius: 4px 14px 14px 4px;
+
+  box-shadow:
+    10px 12px 0 rgba(67, 52, 46, 0.10),
+    0 25px 55px rgba(67, 52, 46, 0.20);
+}
+
+.cover-spine {
+  position: absolute;
+
+  left: 28px;
+  top: 0;
+  bottom: 0;
+
+  width: 2px;
+
+  background: rgba(255,255,255,0.14);
+}
+
+.cover-content {
+  width: 76%;
+
+  text-align: center;
+
+  color: var(--cream);
+}
+
+.cover-small {
+  margin: 0 0 14px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 0.64rem;
+  font-weight: 700;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  opacity: 0.65;
+}
+
+.cover-content h1 {
+  margin: 0;
+
+  font-size: clamp(4rem, 12vw, 6.5rem);
+  line-height: 0.9;
+
+  font-weight: 400;
+}
+
+.cover-subtitle {
+  max-width: 270px;
+
+  margin: 28px auto 40px;
+
+  font-size: 0.95rem;
+  line-height: 1.7;
+
+  opacity: 0.75;
+}
+
+
+/* ============================================================
+   BUTTONS
+   ============================================================ */
+
+.primary-button,
+.secondary-button {
+  border: 0;
+  cursor: pointer;
+}
+
+.primary-button {
+  min-height: 40px;
+
+  padding: 0 18px;
+
+  border-radius: 7px;
+
+  color: var(--paper);
+  background: var(--ink);
+
+  transition:
+    background 0.15s ease,
+    transform 0.15s ease;
+}
+
+.primary-button:hover {
+  background: #30251f;
+  transform: translateY(-1px);
+}
+
+.primary-button.small {
+  min-height: 36px;
+  padding: 0 14px;
+
+  font-size: 0.78rem;
+}
+
+.cover .primary-button {
+  color: var(--ink);
+  background: var(--cream);
+}
+
+.secondary-button {
+  min-height: 38px;
+
+  padding: 0 15px;
+
+  border: 1px solid var(--line);
+  border-radius: 7px;
+
+  background: transparent;
+}
+
+.secondary-button:hover {
+  background: var(--paper-dark);
+}
+
+.text-button {
+  padding: 0;
+
+  border: 0;
+
+  color: var(--brown);
+  background: none;
+
+  cursor: pointer;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.73rem;
+  font-weight: 700;
+}
+
+.text-button:hover {
+  text-decoration: underline;
+}
+
+.icon-button,
+.circle-button {
+  width: 34px;
+  height: 34px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid var(--line);
+  border-radius: 50%;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.icon-button:hover,
+.circle-button:hover {
+  background: var(--blue-light);
+}
+
+.mini-add-button {
+  width: 25px;
+  height: 25px;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: var(--blue-light);
+
+  cursor: pointer;
+}
+
+
+/* ============================================================
+   APP
+   ============================================================ */
+
+.app {
+  width: min(1420px, calc(100% - 36px));
+
+  min-height: 100vh;
+
+  margin: 0 auto;
+
+  padding: 18px 0;
+
+  animation: appear 0.35s ease;
+}
+
+@keyframes appear {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+
+.book-header {
+  height: 58px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 0 4px 10px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  font-size: 1.12rem;
+}
+
+.brand-mark {
+  color: var(--brown);
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+}
+
+.header-date-button {
+  border: 0;
+
+  padding: 6px 8px;
+
+  color: var(--soft-ink);
+  background: none;
+
+  cursor: pointer;
+
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 0.72rem;
+}
+
+
+/* ============================================================
+   NOTEBOOK
+   ============================================================ */
+
+.notebook {
+  display: grid;
+
+  grid-template-columns:
+    180px minmax(0, 1fr);
+
+  min-height: calc(100vh - 105px);
+
+  overflow: hidden;
+
+  border: 1px solid var(--line);
+
+  border-radius: 5px 13px 13px 5px;
+
+  background: var(--paper);
+
+  box-shadow:
+    0 15px 35px rgba(67, 52, 46, 0.10);
+}
+
+
+/* ============================================================
+   SIDEBAR
+   ============================================================ */
+
+.notebook-sidebar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  min-width: 0;
+
+  padding: 28px 16px;
+
+  background: var(--paper-dark);
+
+  border-right: 1px solid var(--line);
+}
+
+.sidebar-label {
+  margin: 0 0 13px;
+
+  color: var(--soft-ink);
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 0.58rem;
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+}
+
+.main-nav {
+  display: flex;
+  flex-direction: column;
+
+  gap: 2px;
+}
+
+.nav-item {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+
+  gap: 10px;
+
+  padding: 9px 10px;
+
+  border: 0;
+  border-radius: 6px;
+
+  color: var(--soft-ink);
+  background: transparent;
+
+  text-align: left;
+
+  cursor: pointer;
+
+  font-size: 0.83rem;
+}
+
+.nav-item:hover {
+  background: rgba(155, 183, 209, 0.15);
+}
+
+.nav-item.active {
+  color: var(--ink);
+
+  background: var(--blue-light);
+
+  font-weight: 700;
+}
+
+.nav-icon {
+  width: 17px;
+
+  text-align: center;
+}
+
+.sidebar-bottom {
+  text-align: center;
+}
+
+.paperclip-decoration {
+  color: var(--brown-light);
+
+  font-size: 1.8rem;
+
+  transform: rotate(-15deg);
+}
+
+.sidebar-tip {
+  margin: 7px 0 0;
+
+  color: var(--soft-ink);
+
+  font-size: 0.7rem;
+  line-height: 1.5;
+}
+
+
+/* ============================================================
+   NOTEBOOK PAGE
+   ============================================================ */
+
+.notebook-page {
+  min-width: 0;
+
+  padding:
+    34px
+    clamp(22px, 4vw, 58px);
+
+  overflow-x: hidden;
+
+  background:
+    repeating-linear-gradient(
+      to bottom,
+      transparent 0,
+      transparent 30px,
+      var(--line-blue) 31px,
+      transparent 32px
+    );
+}
+
+.view {
+  display: none;
+
+  animation: pageIn 0.25s ease;
+}
+
+.view.active {
+  display: block;
+}
+
+@keyframes pageIn {
+  from {
+    opacity: 0;
+    transform: translateX(7px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.page-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 25px;
+}
+
+.page-heading h2 {
+  margin: 0;
+
+  font-size: clamp(2.1rem, 4vw, 3.4rem);
+  font-weight: 400;
+  line-height: 1;
+}
+
+.eyebrow {
+  margin: 0 0 7px;
+
+  color: var(--brown);
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 0.58rem;
+  font-weight: 700;
+
+  letter-spacing: 0.17em;
+}
+
+.muted {
+  margin: 7px 0 0;
+
+  color: var(--soft-ink);
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 0.72rem;
+}
+
+.page-controls {
+  display: flex;
+  gap: 6px;
+}
+
+
+/* ============================================================
+   TODAY
+   ============================================================ */
+
+.today-layout {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    205px;
+
+  gap: 35px;
+
+  align-items: start;
+}
+
+.paper-section {
+  min-width: 0;
+
+  padding: 0;
+
+  background: transparent;
+
+  border: 0;
+}
+
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding-bottom: 10px;
+
+  border-bottom: 1px solid var(--ink);
+}
+
+.section-heading h3 {
+  margin: 0;
+
+  font-size: 1.2rem;
+  font-weight: 400;
+}
+
+.section-kicker {
+  margin: 0 0 4px;
+
+  color: var(--brown);
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 0.55rem;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+}
+
+.count-badge {
+  min-width: 25px;
+  height: 25px;
+
+  display: grid;
+  place-items: center;
+
+  border-radius: 50%;
+
+  color: var(--ink);
+
+  background: var(--blue-light);
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 0.65rem;
+}
+
+
+/* ============================================================
+   TASKS
+   ============================================================ */
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 7px;
+}
+
+.task-item {
+  display: grid;
+
+  grid-template-columns:
+    21px minmax(0, 1fr) auto;
+
+  align-items: center;
+
+  gap: 11px;
+
+  min-width: 0;
+
+  padding: 10px 3px;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.task-check {
+  width: 18px;
+  height: 18px;
+
+  margin: 0;
+
+  appearance: none;
+
+  border: 1px solid var(--brown-light);
+  border-radius: 50%;
+
+  background: var(--paper);
+
+  cursor: pointer;
+}
+
+.task-check:checked {
+  background: var(--brown);
+
+  box-shadow:
+    inset 0 0 0 4px var(--paper);
+}
+
+.task-main {
+  min-width: 0;
+}
+
+.task-name {
+  margin: 0;
+
+  overflow-wrap: anywhere;
+
+  font-size: 0.9rem;
+}
+
+.task-item.completed .task-name {
+  color: var(--soft-ink);
+  text-decoration: line-through;
+}
+
+.task-meta {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 6px;
+
+  margin-top: 3px;
+
+  color: var(--soft-ink);
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 0.59rem;
+}
+
+.priority {
+  padding: 2px 5px;
+
+  border-radius: 4px;
+}
+
+.priority-high {
+  color: #713b35;
+  background: #f1d8d4;
+}
+
+.priority-medium {
+  color: #685137;
+  background: #eee3ca;
+}
+
+.priority-low {
+  color: #50614b;
+  background: #dce7d9;
+}
+
+.task-actions {
+  display: flex;
+  gap: 1px;
+}
+
+.small-action {
+  width: 26px;
+  height: 26px;
+
+  padding: 0;
+
+  border: 0;
+
+  color: var(--soft-ink);
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.small-action:hover {
+  background: var(--paper-dark);
+}
+
+.empty-state {
+  padding: 38px 10px;
+
+  color: var(--soft-ink);
+
+  text-align: center;
+
+  font-size: 0.82rem;
+}
+
+.empty-icon {
+  display: block;
+
+  margin-bottom: 7px;
+
+  color: var(--brown-light);
+
+  font-size: 1.35rem;
+}
+
+.empty-state p {
+  margin: 0 0 8px;
+}
+
+
+/* ============================================================
+   SIDE UTILITIES
+   ============================================================ */
+
+.today-side {
+  display: flex;
+  flex-direction: column;
+
+  gap: 18px;
+
+  min-width: 0;
+}
+
+.mini-card {
+  min-width: 0;
+
+  padding: 14px 0;
+
+  border-top: 1px solid var(--line);
+}
+
+.mini-card:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.mini-card-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 8px;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 0.68rem;
+  font-weight: 700;
+}
+
+.water-display {
+  display: flex;
+  align-items: baseline;
+
+  gap: 5px;
+
+  margin: 10px 0;
+}
+
+.water-display strong {
+  font-size: 1.65rem;
+  font-weight: 400;
+}
+
+.water-display span {
+  color: var(--soft-ink);
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 0.62rem;
+}
+
+.water-controls {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+}
+
+.water-bar {
+  flex: 1;
+
+  height: 5px;
+
+  overflow: hidden;
+
+  border-radius: 999px;
+
+  background: var(--blue-light);
+}
+
+.water-progress {
+  height: 100%;
+  width: 0;
+
+  background: var(--blue);
+
+  transition: width 0.2s ease;
+}
+
+.water-controls .circle-button {
+  width: 25px;
+  height: 25px;
+
+  font-size: 0.75rem;
+}
+
+.countdown-list {
+  display: flex;
+  flex-direction: column;
+
+  margin-top: 8px;
+}
+
+.countdown-item {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    auto
+    auto;
+
+  align-items: center;
+
+  gap: 5px;
+
+  padding: 7px 0;
+
+  border-bottom: 1px dashed var(--line);
+}
+
+.countdown-name {
+  min-width: 0;
+
+  overflow: hidden;
+
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  font-size: 0.72rem;
+}
+
+.countdown-days {
+  color: var(--brown);
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 0.58rem;
+  font-weight: 700;
+}
+
+.countdown-delete,
+.event-delete {
+  border: 0;
+
+  padding: 2px;
+
+  color: var(--soft-ink);
+  background: none;
+
+  cursor: pointer;
+}
+
+.mini-empty {
+  margin-top: 9px;
+
+  color: var(--soft-ink);
+
+  font-size: 0.68rem;
+}
+
+.companion-card {
+  text-align: center;
+}
+
+.companion {
+  display: grid;
+  place-items: center;
+
+  padding: 10px;
+}
+
+.companion-face {
+  width: 50px;
+  height: 50px;
+
+  display: grid;
+  place-items: center;
+
+  border: 1px solid var(--brown-light);
+  border-radius: 45%;
+
+  background: var(--blue-light);
+
+  font-size: 0.9rem;
+}
+
+.companion-card p {
+  margin: 3px 0 0;
+
+  color: var(--soft-ink);
+
+  font-size: 0.65rem;
+}
+
+
+/* ============================================================
+   EVENTS
+   ============================================================ */
+
+.events-section {
+  margin-top: 32px;
+
+  padding-top: 17px;
+
+  border-top: 1px solid var(--line);
+}
+
+.event-list {
+  display: flex;
+  flex-direction: column;
+
+  gap: 3px;
+
+  margin-top: 7px;
+}
+
+.event-item {
+  display: grid;
+
+  grid-template-columns:
+    9px minmax(0, 1fr) auto auto;
+
+  align-items: center;
+
+  gap: 9px;
+
+  padding: 8px 3px;
+
+  border-bottom: 1px solid var(--line);
+}
+
+.event-dot {
+  width: 8px;
+  height: 8px;
+
+  border-radius: 50%;
+
+  background: var(--blue);
+}
+
+.event-dot.brown {
+  background: var(--brown);
+}
+
+.event-dot.cream {
+  background: #c7a96e;
+}
+
+.event-info {
+  min-width: 0;
+}
+
+.event-name {
+  margin: 0;
+
+  overflow-wrap: anywhere;
+
+  font-size: 0.82rem;
+}
+
+.event-time {
+  margin: 3px 0 0;
+
+  color: var(--soft-ink);
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 0.58rem;
+}
+
+.empty-inline {
+  margin-top: 8px;
+
+  color: var(--soft-ink);
+
+  font-size: 0.68rem;
+}
+
+
+/* ============================================================
+   WEEK
+   ============================================================ */
+
+.week-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(7, minmax(0, 1fr));
+
+  min-width: 0;
+
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+}
+
+.week-day {
+  min-width: 0;
+
+  min-height: 320px;
+
+  padding: 12px 9px;
+
+  border-right: 1px solid var(--line);
+}
+
+.week-day:last-child {
+  border-right: 0;
+}
+
+.week-day.today {
+  background: rgba(229, 237, 245, 0.55);
+}
+
+.week-day-name {
+  color: var(--soft-ink);
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 0.58rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+}
+
+.week-day-number {
+  margin: 4px 0 15px;
+
+  font-size: 1.5rem;
+}
+
+.week-entry {
+  min-width: 0;
+
+  margin-bottom: 5px;
+
+  padding: 6px;
+
+  border-left: 2px solid var(--brown);
+
+  background: rgba(238, 231, 220, 0.55);
+
+  overflow-wrap: anywhere;
+
+  font-size: 0.62rem;
+  line-height: 1.3;
+}
+
+.week-entry.event {
+  border-left-color: var(--blue);
+}
+
+.week-empty {
+  color: var(--soft-ink);
+
+  font-size: 0.6rem;
+}
+
+
+/* ============================================================
+   MONTH
+   ============================================================ */
+
+.calendar {
+  min-width: 0;
+
+  border-top: 1px solid var(--ink);
+}
+
+.calendar-weekdays {
+  display: grid;
+
+  grid-template-columns:
+    repeat(7, minmax(0, 1fr));
+
+  border-bottom: 1px solid var(--line);
+}
+
+.calendar-weekdays span {
+  padding: 8px;
+
+  color: var(--soft-ink);
+
+  text-align: center;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 0.58rem;
+  font-weight: 700;
+
+  text-transform: uppercase;
+}
+
+.calendar-grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(7, minmax(0, 1fr));
+}
+
+.calendar-day {
+  min-width: 0;
+  min-height: 95px;
+
+  padding: 7px;
+
+  overflow: hidden;
+
+  border: 0;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+
+  color: var(--ink);
+  background: transparent;
+
+  text-align: left;
+
+  cursor: pointer;
+}
+
+.calendar-day:hover {
+  background: rgba(229, 237, 245, 0.45);
+}
+
+.calendar-day:nth-child(7n) {
+  border-right: 0;
+}
+
+.calendar-day.other-month {
+  opacity: 0.3;
+}
+
+.calendar-day.today {
+  background: var(--blue-light);
+}
+
+.calendar-number {
+  width: 24px;
+  height: 24px;
+
+  display: grid;
+  place-items: center;
+
+  margin-bottom: 5px;
+
+  border-radius: 50%;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 0.65rem;
+}
+
+.calendar-day.today .calendar-number {
+  color: var(--paper);
+  background: var(--brown);
+}
+
+.calendar-entry {
+  width: 100%;
+
+  margin-bottom: 3px;
+
+  padding: 3px 4px;
+
+  overflow: hidden;
+
+  border-radius: 3px;
+
+  background: var(--paper-dark);
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  font-size: 0.55rem;
+}
+
+.calendar-entry.event {
+  background: var(--blue-light);
+}
+
+.calendar-entry.task {
+  background: var(--paper-dark);
+}
+
+.calendar-more {
+  color: var(--soft-ink);
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 0.52rem;
+}
+
+
+/* ============================================================
+   FOCUS
+   ============================================================ */
+
+.focus-page {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    190px;
+
+  gap: 35px;
+
+  align-items: center;
+
+  max-width: 760px;
+
+  margin: 45px auto;
+}
+
+.focus-card {
+  padding: 35px 25px;
+
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--line);
+
+  text-align: center;
+
+  background: rgba(255, 253, 249, 0.65);
+}
+
+.focus-status {
+  margin: 0 0 10px;
+
+  color: var(--brown);
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 0.6rem;
+  font-weight: 700;
+
+  letter-spacing: 0.16em;
+}
+
+.focus-display {
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: clamp(4rem, 10vw, 6.5rem);
+
+  font-weight: 300;
+
+  letter-spacing: -0.07em;
+}
+
+.focus-controls {
+  display: flex;
+  justify-content: center;
+
+  gap: 8px;
+
+  margin-top: 18px;
+}
+
+.focus-note {
+  position: relative;
+
+  padding: 25px 20px;
+
+  background: var(--blue-light);
+
+  transform: rotate(1.5deg);
+}
+
+.focus-note-pin {
+  position: absolute;
+
+  top: -9px;
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  color: var(--brown);
+}
+
+.focus-note p {
+  margin: 0;
+
+  text-align: center;
+
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+
+
+/* ============================================================
+   COLLECTIONS
+   ============================================================ */
+
+.collection-list {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(190px, 1fr)
+    );
+
+  gap: 18px;
+}
+
+.collection-card {
+  position: relative;
+
+  min-width: 0;
+
+  min-height: 150px;
+
+  padding: 20px;
+
+  border: 1px solid var(--line);
+
+  background: var(--paper);
+
+  box-shadow: 3px 4px 0 rgba(67, 52, 46, 0.04);
+}
+
+.collection-clip {
+  position: absolute;
+
+  top: -11px;
+  right: 15px;
+
+  color: var(--brown-light);
+
+  font-size: 1.7rem;
+
+  transform: rotate(12deg);
+}
+
+.collection-card h3 {
+  margin: 8px 0;
+
+  font-size: 1.2rem;
+  font-weight: 400;
+
+  overflow-wrap: anywhere;
+}
+
+.collection-card p {
+  margin: 6px 0;
+
+  color: var(--soft-ink);
+
+  font-size: 0.7rem;
+  line-height: 1.5;
+}
+
+.collection-delete {
+  border: 0;
+
+  padding: 0;
+
+  color: var(--soft-ink);
+  background: none;
+
+  cursor: pointer;
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 0.6rem;
+}
+
+
+/* ============================================================
+   STICKY NOTES
+   ============================================================ */
+
+.notes-board {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(180px, 1fr)
+    );
+
+  gap: 18px;
+}
+
+.note-card {
+  position: relative;
+
+  min-width: 0;
+  min-height: 170px;
+
+  padding: 21px 17px;
+
+  transform: rotate(var(--rotation));
+
+  box-shadow:
+    3px 5px 10px rgba(67, 52, 46, 0.09);
+}
+
+.note-card.blue {
+  background: #dce8f3;
+}
+
+.note-card.cream {
+  background: #f2e6c9;
+}
+
+.note-card.brown {
+  background: #d7c0b4;
+}
+
+.note-card h3 {
+  margin: 0 0 10px;
+
+  font-size: 1.05rem;
+  font-weight: 400;
+
+  overflow-wrap: anywhere;
+}
+
+.note-card p {
+  margin: 0;
+
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+
+  font-size: 0.76rem;
+  line-height: 1.55;
+}
+
+.note-actions {
+  position: absolute;
+
+  right: 8px;
+  bottom: 7px;
+
+  display: flex;
+}
+
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+
+.book-footer {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 8px 4px;
+
+  color: var(--soft-ink);
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 0.58rem;
+}
+
+
+/* ============================================================
+   MODALS
+   ============================================================ */
+
+.modal {
+  position: fixed;
+
+  inset: 0;
+
+  z-index: 100;
+
+  display: grid;
+  place-items: center;
+
+  padding: 20px;
+}
+
+.modal-backdrop {
+  position: absolute;
+
+  inset: 0;
+
+  background: rgba(67, 52, 46, 0.45);
+
+  backdrop-filter: blur(3px);
+}
+
+.modal-card {
+  position: relative;
+
+  z-index: 1;
+
+  width: min(450px, 100%);
+
+  max-height: 90vh;
+
+  overflow-y: auto;
+
+  padding: 24px;
+
+  background: var(--paper);
+
+  border: 1px solid var(--line);
+
+  box-shadow:
+    0 20px 50px rgba(67, 52, 46, 0.20);
+
+  animation: modalIn 0.2s ease;
+}
+
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+
+  gap: 20px;
+
+  margin-bottom: 20px;
+}
+
+.modal-header h3 {
+  margin: 0;
+
+  font-size: 1.45rem;
+  font-weight: 400;
+}
+
+.modal-close {
+  width: 30px;
+  height: 30px;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: var(--paper-dark);
+
+  cursor: pointer;
+}
+
+label {
+  display: block;
+
+  margin-bottom: 14px;
+
+  color: var(--soft-ink);
+
+  font-family: Arial, Helvetica, sans-serif;
+
+  font-size: 0.65rem;
+  font-weight: 700;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+
+  margin-top: 5px;
+
+  padding: 10px 11px;
+
+  border: 1px solid var(--line);
+  border-radius: 5px;
+
+  color: var(--ink);
+  background: var(--paper);
+
+  font-family:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-size: 0.82rem;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.form-row {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1fr);
+
+  gap: 12px;
+}
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+
+  gap: 7px;
+
+  cursor: pointer;
+}
+
+.checkbox-label input {
+  width: auto;
+
+  margin: 0;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+
+  gap: 7px;
+
+  margin-top: 20px;
+}
+
+
+/* ============================================================
+   TABLET
+   ============================================================ */
+
+@media (max-width: 950px) {
+
+  .notebook {
+    grid-template-columns:
+      155px minmax(0, 1fr);
+  }
+
+  .today-layout {
+    grid-template-columns:
+      minmax(0, 1fr)
+      175px;
+
+    gap: 25px;
+  }
+
+  .week-day {
+    min-height: 280px;
+  }
+
+  .week-day-number {
+    font-size: 1.3rem;
+  }
+
+}
+
+
+/* ============================================================
+   MOBILE
+   ============================================================ */
+
+@media (max-width: 700px) {
+
+  .app {
+    width: 100%;
+    padding: 0;
+  }
+
+  .book-header {
+    height: 55px;
+
+    padding: 8px 14px;
+  }
+
+  .notebook {
+    display: block;
+
+    min-height: calc(100vh - 55px);
+
+    border-radius: 0;
+    border-left: 0;
+    border-right: 0;
+  }
+
+  .notebook-sidebar {
+    position: sticky;
+
+    top: 0;
+
+    z-index: 20;
+
+    display: block;
+
+    padding: 6px 8px;
+
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .sidebar-top {
+    width: 100%;
+  }
+
+  .sidebar-label,
+  .sidebar-bottom {
+    display: none;
+  }
+
+  .main-nav {
+    display: flex;
+    flex-direction: row;
+
+    overflow-x: auto;
+
+    scrollbar-width: none;
+  }
+
+  .main-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-item {
+    width: auto;
+
+    flex: 0 0 auto;
+
+    padding: 8px 10px;
+  }
+
+  .nav-item span:last-child {
+    display: none;
+  }
+
+  .nav-icon {
+    width: auto;
+  }
+
+  .notebook-page {
+    padding: 27px 16px;
+  }
+
+  .page-heading {
+    align-items: flex-start;
+
+    flex-direction: column;
+
+    margin-bottom: 22px;
+  }
+
+  .page-heading .primary-button {
+    align-self: flex-start;
+  }
+
+  .today-layout {
+    grid-template-columns: 1fr;
+
+    gap: 28px;
+  }
+
+  .today-side {
+    display: grid;
+
+    grid-template-columns:
+      repeat(
+        2,
+        minmax(0, 1fr)
+      );
+
+    gap: 0 20px;
+  }
+
+  .mini-card {
+    padding: 13px 0;
+  }
+
+  .companion-card {
+    grid-column: 1 / -1;
+  }
+
+  .week-grid {
+    display: grid;
+
+    grid-template-columns:
+      repeat(7, minmax(105px, 1fr));
+
+    overflow-x: auto;
+  }
+
+  .calendar {
+    overflow-x: auto;
+  }
+
+  .calendar-weekdays,
+  .calendar-grid {
+    min-width: 600px;
+  }
+
+  .calendar-day {
+    min-height: 85px;
+  }
+
+  .focus-page {
+    grid-template-columns: 1fr;
+
+    margin: 30px auto;
+  }
+
+  .focus-note {
+    max-width: 230px;
+
+    margin: 0 auto;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .cover-book {
+    min-height: 590px;
+  }
+
+}
+
+
+/* ============================================================
+   SMALL PHONES
+   ============================================================ */
+
+@media (max-width: 430px) {
+
+  .today-side {
+    grid-template-columns: 1fr;
+  }
+
+  .companion-card {
+    grid-column: auto;
+  }
+
+  .task-item {
+    grid-template-columns:
+      20px minmax(0, 1fr)
+      48px;
+  }
+
+  .task-actions {
+    flex-direction: column;
+  }
+
+  .event-item {
+    grid-template-columns:
+      8px minmax(0, 1fr)
+      auto auto;
+  }
+
+  .collection-list,
+  .notes-board {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* ============================================================
+   REDUCED MOTION
+   ============================================================ */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+
+}
